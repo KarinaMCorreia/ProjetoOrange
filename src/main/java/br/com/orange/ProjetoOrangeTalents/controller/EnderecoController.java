@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,9 +21,13 @@ import br.com.orange.ProjetoOrangeTalents.controller.form.Enderecoform;
 import br.com.orange.ProjetoOrangeTalents.model.Endereco;
 import br.com.orange.ProjetoOrangeTalents.repository.EnderecoRepository;
 import br.com.orange.ProjetoOrangeTalents.repository.UsuarioRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/endereco")
+@Api(value="API REST ENDERECO")
+@CrossOrigin(origins="*")
 public class EnderecoController {
 
 	@Autowired
@@ -32,6 +37,7 @@ public class EnderecoController {
 	private UsuarioRepository usuarioRepository;
 
 	@PostMapping("/cadastrar")
+	@ApiOperation(value="Cadastro endereco")
 	public ResponseEntity<EnderecoDto> cadastrar(@RequestBody @Valid Enderecoform form,
 			UriComponentsBuilder uriBuilder) {
 
@@ -44,6 +50,7 @@ public class EnderecoController {
 	}
 
 	@GetMapping("/buscar/{id}")
+	@ApiOperation(value="Busca endereco por id")
 	public ResponseEntity<List<Endereco>> buscar(@PathVariable("id") @Valid long id) {
 		List<Endereco> enderecos = enderecoRepository.findByUsuarioId(id);
 

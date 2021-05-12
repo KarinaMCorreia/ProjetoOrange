@@ -16,5 +16,6 @@ public interface UsuarioRepository  extends CrudRepository<Usuario, Long>{
 	Usuario findById(@NotNull(message = "Teste") Endereco usuarioid);
 	
 	
+	
 
 }

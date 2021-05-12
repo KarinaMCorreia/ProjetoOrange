@@ -8,6 +8,9 @@ public class ProjetoOrangeTalentsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoOrangeTalentsApplication.class, args);
+		
+		
+		
 
 	}
 
